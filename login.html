@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css\StyleLogin.css">
+  <link rel="shortcut icon" type="image/png" href="img\logo.png"/>
+  <title>Login</title>
+</head>
+<body>
+  <div class="container">
+    <i><h1 class="label">Đăng nhập</h1></i>
+    <form class="login_form" action="trangchu.html"method="post" name="form" onsubmit="return validated()">
+      <div class="font">Email:</div>
+      <input type="text" name="email">
+      <div id="email_error">Bạn chưa nhập Email !</div>
+      <div class="font font2">Password:</div>
+      <input type="password" name="password">
+      <div id="password_error">Bạn chưa nhập Password !</div>
+      <button type="submit">Login</button>
+      <i><p> Hoặc đăng nhập bằng: </p></i>
+      <div class="social_icons">
+        <a href="https://vi-vn.facebook.com/"><img src="img\fb.png"></a>
+        <a href="https://twitter.com"><img src="img\gp.png"></a>
+        <a href="https://accounts.google.com/signin/v2/identifier?hl=vi&passive=true&continue=https%3A%2F%2Fwww.google.com.vn%2F%3Fhl%3Dvi&ec=GAZAAQ&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img src="img\gg.png"></a>
+      </div>
+    </form>
+ </div>
+
+ <script>
+ var email = document.forms['form']['email'];
+ var password = document.forms['form']['password'];
+
+ var email_error = document.getElementById('email_error');
+ var pass_error = document.getElementById('password_error');
+
+ email.addEventListener('textInput', email_verify);
+ password.addEventListener('textInput', password_verify);
+
+
+ function validated() {
+   if (email.value.length < 9) {
+     email.style.border = "1px solid red";
+     email_error.style.display = "block";
+     email.focus();
+     return false;
+   }
+   if (password.value.length < 6) {
+     password.style.border = "1px solid red";
+     password_error.style.display = "block";
+     password.focus();
+     return false;
+   }
+ }
+ function email_verify() {
+   if (email.value.length >= 8) {
+     email.style.border = "1px solid silver";
+     email_error.style.display = "none";
+     return true;
+   }
+ }
+ function password_verify() {
+   if (password.value.length >= 5) {
+     password.style.border = "1px solid silver";
+     password_error.style.display = "none";
+     return true;
+   }
+ }
+</script>
+</body>
+</html>
